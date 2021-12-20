@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+
+* {
+  box-sizing: border-box;
+}
+
+th {
+	border-bottom: solid 1px;
+	
+}
+
+.headerH1{
+	border-bottom: solid 1px;
+}
+
+.footerH1{
+	border-top: solid 1px;
+}
+
+.left-div{
+	float: left;
+	width: 20%;
+	border: solid 1px;
+	
+}
+
+.right-div{
+	float: left;
+	width: 80%;
+	border: solid 1px;
+	padding: 15px;
+	height: 80%;
+}
+
+.footer-div{
+	
+}
+
+.allContainer:after {
+	border: 1px solid #000;
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.btn_space{
+	padding:10px;
+	width:60%;
+}
+
+.btn_space button{
+	float:right;
+}
+
+#myModal{
+	display:none;
+	position: absolute;
+	top: 0; left: 0; 
+	width: 20%; height: 20%;
+	background-color: white; /* Fallback color */
+	border-style:solid;
+	
+	left: 50%;
+    top: 50%;
+}
