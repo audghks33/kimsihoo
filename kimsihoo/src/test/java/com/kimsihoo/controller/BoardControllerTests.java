@@ -32,12 +32,19 @@ public class BoardControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 
+	/*
+	 * @Test public void testList() throws Exception { log.info("컨트롤러 테스트 getlist");
+	 * log.info(
+	 * mockMvc.perform(MockMvcRequestBuilders.get("/board/list")).andReturn().
+	 * getModelAndView().getModelMap()); log.info("컨트롤러 테스트 getlist"); }
+	 */
 	@Test
-	public void testList() throws Exception {
-		log.info("컨트롤러 테스트 getlist");
-		log.info(
-				mockMvc.perform(MockMvcRequestBuilders.get("/board/list")).andReturn().getModelAndView().getModelMap());
-		log.info("컨트롤러 테스트 getlist");
+	public void testListPaging() throws Exception {
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/board/list")	
+				.param("pageNum", "2")
+				.param("amount", "2"))
+				.andReturn().getModelAndView().getModelMap()
+				);
 	}
 
 	/*
@@ -63,19 +70,17 @@ public class BoardControllerTests {
 	 * }
 	 */
 
-	@Test
-	public void testModify() throws Exception {
-
-		log.info("컨트롤러 테스트 modify");
-		String resultPage = mockMvc
-				.perform(
-						MockMvcRequestBuilders.post("/board/modify").param("bno", "12").param("title", "컨트롤러 테스트 변경 제목")
-								.param("content", "컨트롤러 테스트 변경 내용").param("writer", "컨트롤러 테스트 변경 작성자"))
-				.andReturn().getModelAndView().getViewName();
-
-		log.info(resultPage);
-		log.info("컨트롤러 테스트 modify");
-	}
+	/*
+	 * @Test public void testModify() throws Exception {
+	 * 
+	 * log.info("컨트롤러 테스트 modify"); String resultPage = mockMvc .perform(
+	 * MockMvcRequestBuilders.post("/board/modify").param("bno",
+	 * "12").param("title", "컨트롤러 테스트 변경 제목") .param("content",
+	 * "컨트롤러 테스트 변경 내용").param("writer", "컨트롤러 테스트 변경 작성자"))
+	 * .andReturn().getModelAndView().getViewName();
+	 * 
+	 * log.info(resultPage); log.info("컨트롤러 테스트 modify"); }
+	 */
 	
 	/*
 	 * @Test public void testRemove() throws Exception{

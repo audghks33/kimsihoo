@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kimsihoo.domain.BoardVO;
+import com.kimsihoo.domain.Criteria;
 import com.kimsihoo.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -51,11 +52,17 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.delete(bno) == 1;
 	}
 
+	/*
+	 * @Override public List<BoardVO> getList() {
+	 * 
+	 * log.info("비즈니스 getlist........ "); return mapper.getList(); }
+	 */
+	
 	@Override
-	public List<BoardVO> getList() {
+	public List<BoardVO> getList(Criteria cri) {
 		
-		log.info("비즈니스 getlist........ ");
-		return mapper.getList();
+		log.info("비즈니스 getlist........ Cri 확인 : " + cri);
+		return mapper.getListWithPaging(cri);
 	}
 
 	

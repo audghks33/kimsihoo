@@ -64,3 +64,8 @@ th {
 	left: 50%;
     top: 50%;
 }
+
+.paginate_button_gg{
+	padding-left: 10px;
+	background-color: gray;
+}

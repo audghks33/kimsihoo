@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kimsihoo.domain.BoardVO;
+import com.kimsihoo.domain.Criteria;
+import com.kimsihoo.domain.PageDTO;
 import com.kimsihoo.service.BoardService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @Log4j
@@ -23,11 +24,18 @@ public class BoardController {
 
 	private BoardService service;
 	
+	/*
+	 * @GetMapping("/list") public void list(Model model) {
+	 * 
+	 * log.info("컨트롤러 list"); model.addAttribute("list", service.get()); }
+	 */
+	
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Model model, Criteria cri) {
 		
-		log.info("컨트롤러 list");
-		model.addAttribute("list", service.getList());
+		log.info("컨트롤러 list + cri : " +cri);
+		model.addAttribute("list", service.getList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 	}
 	
 	@PostMapping("/register")
@@ -47,9 +55,9 @@ public class BoardController {
 		
 	}
 	
-	@GetMapping("/get")
+	@GetMapping({"/get","/modify"})
 	public void get(@RequestParam("bno") Long bno, Model model) {
-		log.info("컨트롤러 get");
+		log.info("컨트롤러 get or modify");
 		model.addAttribute("board", service.get(bno));
 		log.info("컨트롤러 get");
 	}
@@ -60,6 +68,7 @@ public class BoardController {
 		
 		if(service.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
+		
 		}
 		
 		return "redirect:/board/list";

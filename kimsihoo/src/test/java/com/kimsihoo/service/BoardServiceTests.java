@@ -1,6 +1,7 @@
 package com.kimsihoo.service;
 
 import static org.junit.Assert.assertNotNull;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kimsihoo.domain.BoardVO;
+import com.kimsihoo.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -44,7 +46,7 @@ public class BoardServiceTests {
 	public void testGetlist() {
 		
 		log.info("비즈니스 테스트 getlist.........................");
-		service.getList().forEach(board -> log.info(board));
+		service.getList(new Criteria(2,10)).forEach(board -> log.info(board));
 		log.info("비즈니스 테스트 getlist.........................");
 	}
 	
