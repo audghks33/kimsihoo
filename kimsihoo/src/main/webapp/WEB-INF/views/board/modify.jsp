@@ -20,6 +20,11 @@
 	<div class="right-div">
 		<h1>게시물 변경 페이지</h1>
 			<form action="/board/modify" method="post">
+				<input type="hidden" name='pageNum' value='<c:out value= "${cri.pageNum}" />' >
+				<input type="hidden" name='amount' value='<c:out value= "${cri.amount}" />' >
+				<input type="hidden" name='type' value='<c:out value= "${cri.type}" />' >
+				<input type="hidden" name='keyword' value='<c:out value= "${cri.keyword}" />' >
+			
 				<div><label>게시물 번호</label><input name="bno" value='<c:out value="${board.bno}"/>' readonly="readonly" ></div><br/>
 				<div><label>게시물 제목</label><input name="title" value='<c:out value="${board.title}"/>'  ></div><br/>
 				<div><label>게시글 내용</label><textarea name="content" rows="25" cols="100" ><c:out value="${board.title}"/></textarea></div><br/>
@@ -53,13 +58,20 @@
 				formObj.attr("action", "/board/remove");
 				
 			}else if(operation === 'list'){
-				self.location="/board/list";
 				formObj.attr("action","/board/list").attr("method","get")
+				var pageNumTag = $("input[name='pageNum']").clone();
+				var amountTag = $("input[name='amount']").clone();
+				var keywordTag = $("input[name='keyword']").clone();
+				var typeTag = $("input[name='type']").clone();
 				formObj.empty();
 				
+				formObj.append(pageNumTag);
+				formObj.append(amountTag);
+				formObj.append(keywordTag);
+				formObj.append(typeTag);
+				
 			}
-			console.log("")
-			console.log(operation)
+			
 			formObj.submit();
 	
 		});

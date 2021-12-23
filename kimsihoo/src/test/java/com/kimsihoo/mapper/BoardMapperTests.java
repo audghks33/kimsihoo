@@ -72,14 +72,23 @@ public class BoardMapperTests {
 	 * 
 	 * int count = mapper.update(board); log.info("영속성계층 update count :" + count); }
 	 */
+	/*
+	 * @Test public void testPaging() { Criteria cri = new Criteria();
+	 * cri.setAmount(10); cri.setPageNum(2);
+	 * 
+	 * List<BoardVO> list = mapper.getListWithPaging(cri);
+	 * 
+	 * list.forEach(board -> log.info(board.getBno())); }
+	 */
+	
 	@Test
-	public void testPaging() {
+	public void testSearch() {
+		
 		Criteria cri = new Criteria();
-		cri.setAmount(10);
-		cri.setPageNum(2);
+		cri.setKeyword("영속");
+		cri.setType("TC");
 		
 		List<BoardVO> list = mapper.getListWithPaging(cri);
-		
-		list.forEach(board -> log.info(board.getBno()));
+		list.forEach(board -> log.info(board));
 	}
 }
