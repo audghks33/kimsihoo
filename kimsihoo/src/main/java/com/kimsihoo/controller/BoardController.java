@@ -103,4 +103,9 @@ public class BoardController {
 		
 		return "redirect:/board/list" + cri.getListLink();
 	}
+	
+	@GetMapping("/canvas")
+	public void canvas() {
+		
+	}
 }

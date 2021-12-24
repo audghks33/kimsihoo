@@ -1,8 +1,10 @@
 package com.kimsihoo.controller;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -77,11 +79,19 @@ public class UploadController {
 			
 			log.info("only file name: " + uploadFileName);
 			
-			//File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
-			File saveFile = new File(uploadPath, uploadFileName);
+			//uuid 추가
+			UUID uuid = UUID.randomUUID();
 			
+			uploadFileName = uuid.toString() + "_" + uploadFileName;
+			//uuid 추가
+			
+			//File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
 			try {
+			File saveFile = new File(uploadPath, uploadFileName);
+				
 				multipartFile.transferTo(saveFile);
+				
+				log.info(uploadFileName);
 			} catch (Exception e) {
 				log.error(e.getMessage());
 			}
@@ -97,5 +107,19 @@ public class UploadController {
 		String str  = sdf.format(date);
 		
 		return str.replace("-", File.separator);
+	}
+	
+	private boolean checkImageType(File file) {
+		
+		try {
+			String contentType = Files.probeContentType(file.toPath());
+			
+			return contentType.startsWith("image");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 }
