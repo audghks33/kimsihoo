@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../resources/style.css" >
+
 <meta charset="UTF-8">
 <title>PT 업무 보조 게시판</title>
 </head>

@@ -1,13 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../views/includes/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	#dd {
+		height:50%;
+		width: 50%;
+	}
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
+	<img id="dd" src='../resources/images/trainingProgram.jpg' alt="운동프로그램" />
 <div class="uploadDiv">
 	<input type="file" name="uploadFile" multiple >
 	
@@ -54,6 +61,8 @@
 			
 			console.log(files);
 			
+			//$(".uploadDiv").append("<img src='D:\upload\temp2\2021\12\24\c557bf94-e8c2-455e-adc6-64d2df540ba5_0001' />");
+			
 			for(var i = 0 ; i < files.length; i++){
 				formData.append("uploadFile", files[i]);
 			}
@@ -70,8 +79,6 @@
 				
 			}); // /$.ajax
 		}); // /#uploadBtn
-		
-	
 		
 	});
 </script>

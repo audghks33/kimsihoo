@@ -23,6 +23,7 @@
 			<div><label>게시물 제목</label><input name="title"></div><br/>
 			<div><label>게시글 내용</label><textarea name="content" rows="25" cols="100"></textarea></div><br/>
 			<div><label>게시글 작성자</label><input name="writer" value="작성자 필요시 기입 지우고 쓰기" ></div>
+			
 			<div class="btn_space">
 			<button type="submit" data-oper="register" >등록</button>
 			<button type="submit" data-oper="list"  >목록</button>
